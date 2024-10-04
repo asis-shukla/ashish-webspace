@@ -17,7 +17,7 @@ export default function Page() {
       </a>
 
       <h1 className="mb-8 text-2xl font-medium tracking-tight">
-        Portfolio, made simple!
+        Software Engineer
       </h1>
 
       <div className="prose prose-neutral dark:prose-invert">
@@ -58,7 +58,7 @@ export default function Page() {
         <p>
           Built and maintained by{" "}
           <a href="https://imsirius.xyz/" target="_blank">
-            Sirius
+            Ashish
           </a>
           .
         </p>
