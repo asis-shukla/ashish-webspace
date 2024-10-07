@@ -5,7 +5,6 @@ import {
   FaXTwitter,
   FaGithub,
   FaInstagram,
-  FaRss,
   FaLinkedinIn,
   FaFacebook,
 } from "react-icons/fa6";
@@ -31,9 +30,6 @@ function SocialLinks() {
       <SocialLink href={socialLinks.instagram} icon={FaInstagram} />
       <SocialLink href={socialLinks.facebook} icon={FaFacebook} />
       <SocialLink href={socialLinks.email} icon={TbMailFilled} />
-      <a href="/rss.xml" target="_self">
-        <FaRss />
-      </a>
     </div>
   );
 }
