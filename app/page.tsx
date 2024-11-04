@@ -16,51 +16,42 @@ export default function Page() {
         />
       </a>
 
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">
+      <h2 className="mb-8 text-2xl font-medium tracking-tight">
         Software Engineer
-      </h1>
+      </h2>
 
       <div className="prose prose-neutral dark:prose-invert">
+        <p>Hey there! It’s me, Ashish.</p>
         <p>
-          A clean, fast, and lightweight portfolio template built with Next.js,
-          Vercel, and Tailwind CSS for optimal performance.
+          I’m a front-end developer with five years under my belt, crafting web
+          applications that (hopefully) make people say, “Wow, that’s smooth!”
+          Armed with React, HTML, CSS, JavaScript, and a sprinkle of Redux
+          magic, I love blending design and functionality to create seamless
+          digital experiences.
         </p>
         <p>
-          Nextfolio includes all the essentials for a stunning portfolio: SEO,
-          MDX support, RSS, Atom, & JSON feeds, analytics, tweet & YouTube
-          embeds, KaTeX integration, and{" "}
-          <a
-            target="_blank"
-            href="https://github.com/1msirius/Nextfolio?tab=readme-ov-file#features"
-          >
-            more
-          </a>
-          .
+          Beyond the screen, I’m on a mission to make learning more fun and
+          accessible—because who says education has to be boring? I’m all about
+          using tech and AI to shake up the way we learn, especially here in
+          India.
         </p>
         <p>
-          Nextfolio is{" "}
-          <a href={socialLinks.github} target="_blank">
-            open-source
-          </a>{" "}
-          and fully customizable, making it easy to add more features.
+          When I’m not coding, you’ll find me off exploring. I’m an outdoor
+          enthusiast who loves cycling, mountains, beaches, and now, apparently,
+          sailing—because why not add “wannabe sailor” to the list? I’m also a
+          big fan of comedy movies and music, both of which keep my sanity
+          intact.
         </p>
         <p>
-          <a
-            href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F1msirius%2FNextfolio"
-            target="_blank"
-          >
-            Deploy
-          </a>{" "}
-          your Nextfolio site with Vercel in minutes and follow the set up
-          instructions in the{" "}
-          <a href="/blog/getting-started">Getting Started</a> post.
+          So, if you’re looking to chat, collaborate, or just share your
+          favorite cat meme, don’t be shy! Click your favorite social media icon
+          at the bottom to stay updated on my latest projects, blogs, and maybe
+          a few inspirational quotes...or just cute animal pictures!"
         </p>
         <p>
-          Built and maintained by{" "}
-          <a href="https://imsirius.xyz/" target="_blank">
-            Ashish
-          </a>
-          .
+          Welcome to my portfolio! Here’s where I share my work, my wild ideas,
+          and my dream of a more connected world… with a touch of adventure, of
+          course.
         </p>
       </div>
     </section>
