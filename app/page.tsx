@@ -16,9 +16,7 @@ export default function Page() {
         />
       </a>
 
-      <h2 className="mb-8 text-2xl font-medium tracking-tight">
-        Software Engineer
-      </h2>
+      <h1 className="mb-8 text-2xl font-medium tracking-tight">About</h1>
 
       <div className="prose prose-neutral dark:prose-invert">
         <p>Hey there! It’s me, Ashish.</p>
