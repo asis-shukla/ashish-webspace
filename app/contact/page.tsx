@@ -10,16 +10,16 @@ function Contact() {
   //   return ;
   // }
 
-  const nameInputRef = useRef(null);
-  const emailInputRef = useRef(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (isAnonymous) {
-      nameInputRef.current.value = "Anonymous";
-      emailInputRef.current.value = "anonymous@mail.com";
+      nameInputRef.current!.value = "Anonymous";
+      emailInputRef.current!.value = "anonymous@mail.com";
     } else {
-      nameInputRef.current.value = "";
-      emailInputRef.current.value = "";
+      nameInputRef.current!.value = "";
+      emailInputRef.current!.value = "";
     }
   }, [isAnonymous]);
 
@@ -33,7 +33,7 @@ function Contact() {
             type="checkbox"
             name="checkbox"
             className="w-5 h-f"
-            onClick={(event) => {
+            onClick={(event: any) => {
               setIsAnonymous(event.target.checked);
             }}
           />
