@@ -38,7 +38,7 @@ function Contact() {
             />
             <label
               htmlFor="checkbox"
-              className={"text-sm font-medium text-gray-600 ml-4"}
+              className={"text-base font-medium text-gray-600 ml-4"}
             >
               Send as Anonymous
             </label>
