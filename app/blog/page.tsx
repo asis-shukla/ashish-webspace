@@ -44,7 +44,7 @@ export default function BlogPosts() {
         </div>
       ) : (
         <Link
-          href={"https://blog.ashishshukla.site/"}
+          href={"https://asis.hashnode.dev/"}
           className="block text-center underline text-blue-500 hover:text-blue-600 ml-auto"
         >
           Visit Blog Site
