@@ -5,7 +5,7 @@ import { formatDate, getBlogPosts } from "app/lib/posts";
 import { metaData } from "app/config";
 
 export async function generateStaticParams() {
-  let posts = getBlogPosts();
+  let posts = await getBlogPosts();
 
   return posts.map((post) => ({
     slug: post.slug,
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata(props): Promise<Metadata | undefined> {
   const params = await props.params;
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  let post = (await getBlogPosts()).find((post) => post.slug === params.slug);
   if (!post) {
     return;
   }
@@ -55,7 +55,7 @@ export async function generateMetadata(props): Promise<Metadata | undefined> {
 
 export default async function Blog(props) {
   const params = await props.params;
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  let post = (await getBlogPosts()).find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -94,7 +94,7 @@ export default async function Blog(props) {
         </p>
       </div>
       <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-        <CustomMDX source={post.content} />
+        <CustomMDX {...post.content} />
       </article>
     </section>
   );

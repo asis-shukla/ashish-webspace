@@ -7,8 +7,8 @@ export const metadata = {
   description: "Nextfolio Blog",
 };
 
-export default function BlogPosts() {
-  let allBlogs = getBlogPosts();
+export default async function BlogPosts() {
+  let allBlogs = await getBlogPosts();
 
   return (
     <section>
