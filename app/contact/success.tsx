@@ -14,10 +14,12 @@ export const Success = (
         d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
       />
     </svg>
-
-    <p className="text-2xl font-light">Success</p>
-    <p className="mt-2 text-xl font-normal">
-      We received your message, Thanks!{" "}
+    <p className="mt-2 text-lg font-normal">
+      We received your message. You will receive a reply shortly.
+      <br />
+      <span className="text-lg font-medium">
+        Thank you!
+      </span>
     </p>
   </div>
 );
