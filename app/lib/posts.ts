@@ -3,6 +3,8 @@ import path from "path";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import { features } from "app/constants";
+import { fetchHashnodePosts } from "app/lib/hashnode";
 
 type Metadata = {
   title: string;
@@ -10,6 +12,13 @@ type Metadata = {
   summary: string;
   tags: string;
   image?: string;
+};
+
+type BlogPost = {
+  metadata: Metadata;
+  slug: string;
+  content: any; // Can be serialized MDX or HTML string
+  isHashnode?: boolean; // Flag to indicate if post is from Hashnode
 };
 
 function parseFrontmatter(fileContent: string) {
@@ -65,8 +74,30 @@ async function getMDXData(dir: string) {
   );
 }
 
-export async function getBlogPosts() {
+export async function getBlogPosts(): Promise<BlogPost[]> {
+  // If IN_WEBSITE_BLOGS is false, fetch from Hashnode
+  if (!features.IN_WEBSITE_BLOGS) {
+    return getHashnodePosts();
+  }
+  
+  // Otherwise use local MDX files
   return getMDXData(path.join(process.cwd(), "content"));
+}
+
+async function getHashnodePosts(): Promise<BlogPost[]> {
+  const posts = await fetchHashnodePosts();
+  return posts.map((post) => ({
+    metadata: {
+      title: post.title,
+      publishedAt: post.publishedAt,
+      summary: post.brief,
+      tags: post.tags.map((tag) => tag.name).join(", "),
+      image: post.coverImage?.url,
+    },
+    slug: post.slug,
+    content: post.content, // Store HTML content directly
+    isHashnode: true,
+  }));
 }
 
 export function formatDate(date: string, includeRelative = false) {

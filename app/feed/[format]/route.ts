@@ -3,6 +3,8 @@ import { getBlogPosts } from "app/lib/posts";
 import { metaData } from "app/config";
 import { NextResponse } from "next/server";
 
+export const revalidate = 3600; // Revalidate feeds every 1 hour
+
 export async function generateStaticParams() {
   return [
     { format: "rss.xml" },

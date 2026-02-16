@@ -4,6 +4,9 @@ import { CustomMDX } from "app/components/mdx";
 import { formatDate, getBlogPosts } from "app/lib/posts";
 import { metaData } from "app/config";
 
+// Revalidate blog posts every 1 hour (3600 seconds)
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   let posts = await getBlogPosts();
 
@@ -94,7 +97,15 @@ export default async function Blog(props) {
         </p>
       </div>
       <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-        <CustomMDX {...post.content} />
+        {post.isHashnode ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.content,
+            }}
+          />
+        ) : (
+          <CustomMDX {...post.content} />
+        )}
       </article>
     </section>
   );
