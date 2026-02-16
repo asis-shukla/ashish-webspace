@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { formatDate, getBlogPosts } from "app/lib/posts";
 
-// Revalidate blog posts every 1 hour (3600 seconds)
-export const revalidate = 3600;
+// Blog posts are revalidated on-demand via webhook when new posts are published on Hashnode
+// See: app/api/webhooks/hashnode/route.ts
 
 export const metadata = {
   title: "Blog",

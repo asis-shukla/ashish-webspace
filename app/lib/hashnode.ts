@@ -131,7 +131,8 @@ export async function fetchHashnodePosts(): Promise<HashNodePost[]> {
         query,
         variables: { username }
       }),
-      next: { revalidate: 3600 }, // Cache for 1 hour
+      // Webhook-based revalidation handles cache invalidation on new posts
+      // See: app/api/webhooks/hashnode/route.ts
     });
 
     if (!response.ok) {

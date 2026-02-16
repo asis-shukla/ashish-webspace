@@ -3,7 +3,8 @@ import { getBlogPosts } from "app/lib/posts";
 import { metaData } from "app/config";
 import { NextResponse } from "next/server";
 
-export const revalidate = 3600; // Revalidate feeds every 1 hour
+// Feeds are revalidated on-demand via webhook when new posts are published on Hashnode
+// See: app/api/webhooks/hashnode/route.ts
 
 export async function generateStaticParams() {
   return [
