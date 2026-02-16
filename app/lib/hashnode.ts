@@ -22,16 +22,6 @@ type HashNodePost = {
   }>;
 };
 
-type HashNodeResponse = {
-  data: {
-    user: {
-      publication: {
-        posts: Array<HashNodePost>;
-      };
-    };
-  };
-};
-
 // Sanitization options for Hashnode HTML content
 const sanitizeOptions = {
   allowedTags: [
@@ -79,7 +69,7 @@ export async function fetchHashnodePosts(): Promise<HashNodePost[]> {
 
   if (!username || !apiKey) {
     console.warn(
-      "Hashnode credentials not configured. Ensure NEXT_PUBLIC_HASHNODE_USERNAME and HASHNODE_API_KEY are set."
+      "Hashnode credentials not configured. Ensure NEXT_PUBLIC_HASHNODE_USERNAME and HASHNODE_API_KEY are set.",
     );
     return [];
   }
@@ -87,7 +77,7 @@ export async function fetchHashnodePosts(): Promise<HashNodePost[]> {
   const query = `
     query GetUserPosts($username: String!) {
       user(username: $username) {
-        publications(first: 1) {
+        publications(first: 5) {
           edges {
             node {
               posts(first: 50) {
@@ -127,9 +117,9 @@ export async function fetchHashnodePosts(): Promise<HashNodePost[]> {
         "Content-Type": "application/json",
         Authorization: apiKey,
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         query,
-        variables: { username }
+        variables: { username },
       }),
       // Webhook-based revalidation handles cache invalidation on new posts
       // See: app/api/webhooks/hashnode/route.ts
@@ -137,15 +127,20 @@ export async function fetchHashnodePosts(): Promise<HashNodePost[]> {
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error(`Hashnode API error ${response.status}:`, errorText.substring(0, 300));
+      console.error(
+        `Hashnode API error ${response.status}:`,
+        errorText.substring(0, 300),
+      );
       throw new Error(`Hashnode API error: ${response.status}`);
     }
 
-    const data: any = await response.json();
+    const data = await response.json();
 
     if (data.errors) {
       console.error("Hashnode GraphQL errors:", data.errors);
-      throw new Error(`Hashnode GraphQL error: ${data.errors[0]?.message || "Unknown error"}`);
+      throw new Error(
+        `Hashnode GraphQL error: ${data.errors[0]?.message || "Unknown error"}`,
+      );
     }
 
     // Extract posts from nested publications structure
@@ -162,7 +157,7 @@ export async function fetchHashnodePosts(): Promise<HashNodePost[]> {
     }
 
     // Transform Hashnode GraphQL edges to flat array
-    return posts.map((edge: any) => {
+    return posts.map((edge) => {
       const post = edge.node;
       return {
         id: post.id,
