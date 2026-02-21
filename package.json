@@ -1,6 +1,8 @@
 {
   "private": true,
   "license": "MIT",
+  "version": "1.0.0",
+  "name": "ashish-shukla-portfolio-site",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
